@@ -15,7 +15,9 @@ function mostrarHistorialInscripciones() {
 
   historialInscripciones.forEach(inscripcion => {
     const item = document.createElement("li");
-    item.textContent = `${inscripcion.nombre} ${inscripcion.apellido} - ${inscripcion.instrumento} - ${inscripcion.edad} años - ${inscripcion.fechaInicio}`;
+    item.textContent = `${inscripcion.nombre} ${inscripcion.apellido} - ${inscripcion.instrumento} - 
+
+${inscripcion.edad} años - ${inscripcion.fechaInicio}`;
     lista.appendChild(item);
   });
 
@@ -76,7 +78,8 @@ function calcularPrecioTotal(instrumento, diasReserva) {
     if (edad < 18) {
     return "Lo sentimos, debes ser mayor de edad para inscribirte.";
   } else {
-    // Validar que el nombre y apellido no tenga números, uso una expresion regular de JS
+    // Validar que el nombre y apellido no tenga números, uso una expresion regular de JS, funciona en local
+//no poseo los conocimientos para arreglarlo. igual lo puse como practica. aclaro.
     const regex = /\d/;
     if (regex.test(nombre)) {
       return "El nombre no puede contener números.";
@@ -87,7 +90,9 @@ function calcularPrecioTotal(instrumento, diasReserva) {
     }
     const diasReserva = Math.ceil((new Date(fechaInicio) - new Date()) / (1000 * 60 * 60 * 24));
     const precioTotal = calcularPrecioTotal(instrumento, diasReserva);
-    const mensaje = `¡Felicidades ${nombre} ${apellido}! Te has inscripto en la escuela de música para tocar el ${instrumento}. El precio total de tu reserva es de ${precioTotal} dólares.`;
+    const mensaje = `¡Felicidades ${nombre} ${apellido}! Te has inscripto en la escuela de música para tocar el 
+
+${instrumento}. El precio total de tu reserva es de ${precioTotal} dólares.`;
     const inscripcion = {
       nombre,
       apellido,
@@ -105,4 +110,3 @@ function borrarCampos() {
   document.querySelector("#formulario").reset();
   document.querySelector("#mensaje").textContent = "";
 }
-
